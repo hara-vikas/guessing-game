@@ -7,11 +7,8 @@ print('if you are near to the number within 10 numbers it shows -warm')
 print('if you are near to the number away 10 numbers it shows - cold')
 print('if you are very near to the number it shows - warmer')
 print('if you are farther than the number before it shows -colder', '\nlets start')
-ALGUESS, PREGUESS, FLAG = 0, 0, 0
-while True:                                                        #while loop for iteratons
-   if FLAG == 1:
-       PREGUESS = GUESS
-	
+ALGUESS, PREGUESS, FLAG, GUESS = 0, 0, 0, 0
+while True:                                                        #while loop for iteratons	
    GUESS = int(input('enter your guess'))
    ALGUESS = ALGUESS+1
    if GUESS in range(1, 101):
@@ -21,18 +18,17 @@ while True:                                                        #while loop f
 	   exit()
        elif abs(GEN-GUESS) <= 10 and GEN > GUESS and FLAG == 0:
 	   FLAG = 1
+           PREGUESS = GUESS
 	   print('warm')
-	   continue
        elif abs(GEN-GUESS) <= 10 and GEN < GUESS and FLAG == 0:
 	   FLAG = 1
+           PREGUESS = GUESS 
 	   print('cold')
-	   continue
        elif abs(GEN-GUESS) < abs(GEN-PREGUESS) and FLAG == 1:
+	   PREGUESS = GUESS
 	   print('warmer')
-	   continue
        elif abs(GEN-GUESS) > abs(GEN-PREGUESS) and FLAG == 1:
+	   PREGUESS = GUESS
 	   print('colder')
-	   continue
    else:
-       print('out of bounds')
-       print('number should lie between 1 to 100')
+       print('out of bounds', 'number should lie between 1 to 100')
